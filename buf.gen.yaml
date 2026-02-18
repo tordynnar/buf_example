@@ -4,7 +4,7 @@ plugins:
   - protoc_builtin: python
     out: proto_package/src
 
-  - remote: buf.build/grpc/python
+  - local: grpc_python_plugin
     out: proto_package/src
 
   - local: .venv/bin/protoc-gen-mypy

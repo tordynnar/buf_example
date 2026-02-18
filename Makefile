@@ -43,7 +43,7 @@ all-csharp: generate-csharp build-csharp pack-csharp
 # --- Go targets ---
 generate-go:
 	rm -rf go_package/demo/
-	buf generate --template buf.gen.go.yaml
+	PATH="$$(go env GOPATH)/bin:$$PATH" buf generate --template buf.gen.go.yaml
 
 build-go: generate-go
 	cd go_package && go mod tidy

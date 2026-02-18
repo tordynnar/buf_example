@@ -1,10 +1,10 @@
 version: v2
 clean: true
 plugins:
-  - remote: buf.build/community/neoeinstein-prost
+  - local: protoc-gen-prost
     out: rust_package/src/gen
 
-  - remote: buf.build/community/neoeinstein-tonic
+  - local: protoc-gen-tonic
     out: rust_package/src/gen
 
 inputs:

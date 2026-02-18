@@ -3,10 +3,10 @@ clean: true
 managed:
   enabled: true
 plugins:
-  - remote: buf.build/protocolbuffers/csharp
+  - protoc_builtin: csharp
     out: csharp_package/Generated
 
-  - remote: buf.build/grpc/csharp
+  - local: grpc_csharp_plugin
     out: csharp_package/Generated
 
 inputs:
