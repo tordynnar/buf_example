@@ -8,3 +8,7 @@ csharp_package/Generated/
 csharp_package/bin/
 csharp_package/obj/
 csharp_package/dist/
+go_package/demo/
+bin/
+rust_package/src/gen/demo/
+target/

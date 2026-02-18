@@ -1,4 +1,4 @@
-.PHONY: generate postgen build install lint typecheck check all clean generate-csharp build-csharp pack-csharp clean-csharp all-csharp
+.PHONY: generate postgen build install lint typecheck check all clean generate-csharp build-csharp pack-csharp clean-csharp all-csharp generate-go build-go clean-go all-go generate-rust build-rust clean-rust all-rust
 
 generate:
 	buf generate
@@ -39,3 +39,31 @@ clean-csharp:
 	rm -rf csharp_package/Generated/ csharp_package/bin/ csharp_package/obj/ csharp_package/dist/
 
 all-csharp: generate-csharp build-csharp pack-csharp
+
+# --- Go targets ---
+generate-go:
+	rm -rf go_package/demo/
+	buf generate --template buf.gen.go.yaml
+
+build-go: generate-go
+	cd go_package && go mod tidy
+	cd echo_server_go && go mod tidy && go build -o ../bin/echo_server_go .
+	cd echo_client_go && go mod tidy && go build -o ../bin/echo_client_go .
+
+clean-go:
+	rm -rf go_package/demo/ bin/echo_server_go bin/echo_client_go
+
+all-go: generate-go build-go
+
+# --- Rust targets ---
+generate-rust:
+	buf generate --template buf.gen.rust.yaml
+
+build-rust: generate-rust
+	cargo build --release
+
+clean-rust:
+	rm -rf rust_package/src/gen/
+	cargo clean
+
+all-rust: generate-rust build-rust
