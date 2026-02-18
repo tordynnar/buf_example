@@ -1,0 +1,17 @@
+version: v2
+clean: true
+plugins:
+  - protoc_builtin: python
+    out: proto_package/src
+
+  - remote: buf.build/grpc/python
+    out: proto_package/src
+
+  - local: .venv/bin/protoc-gen-mypy
+    out: proto_package/src
+
+  - local: .venv/bin/protoc-gen-mypy_grpc
+    out: proto_package/src
+
+inputs:
+  - directory: proto

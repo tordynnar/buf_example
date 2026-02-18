@@ -1,0 +1,13 @@
+{
+    "typeCheckingMode": "strict",
+    "pythonVersion": "3.11",
+    "include": [
+        "echo_server",
+        "echo_client"
+    ],
+    "exclude": [
+        "proto_package"
+    ],
+    "venvPath": ".",
+    "venv": ".venv"
+}

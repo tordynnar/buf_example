@@ -1,0 +1,4 @@
+extend-exclude = ["proto_package"]
+
+[lint]
+select = ["E", "F", "W", "I"]
