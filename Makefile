@@ -1,4 +1,4 @@
-.PHONY: generate postgen build install lint typecheck check all clean
+.PHONY: generate postgen build install lint typecheck check all clean generate-csharp build-csharp pack-csharp clean-csharp all-csharp
 
 generate:
 	buf generate
@@ -25,3 +25,17 @@ all: generate postgen install check
 
 clean:
 	rm -rf proto_package/src/
+
+generate-csharp:
+	buf generate --template buf.gen.csharp.yaml
+
+build-csharp:
+	dotnet build csharp_package/Demo.Proto.Bindings.csproj --configuration Release
+
+pack-csharp:
+	dotnet pack csharp_package/Demo.Proto.Bindings.csproj --configuration Release --output csharp_package/dist
+
+clean-csharp:
+	rm -rf csharp_package/Generated/ csharp_package/bin/ csharp_package/obj/ csharp_package/dist/
+
+all-csharp: generate-csharp build-csharp pack-csharp

@@ -4,3 +4,7 @@ __pycache__/
 dist/
 build/
 proto_package/src/
+csharp_package/Generated/
+csharp_package/bin/
+csharp_package/obj/
+csharp_package/dist/

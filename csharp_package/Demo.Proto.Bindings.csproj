@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PackageId>Demo.Proto.Bindings</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Demo</Authors>
+    <Description>C# protobuf and gRPC bindings for Demo services</Description>
+    <RootNamespace>Demo</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.28.*" />
+    <PackageReference Include="Grpc.Core" Version="2.46.*" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>
