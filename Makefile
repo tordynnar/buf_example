@@ -1,4 +1,4 @@
-.PHONY: generate postgen build install lint typecheck check all clean generate-csharp build-csharp pack-csharp clean-csharp all-csharp generate-go build-go clean-go all-go generate-rust build-rust clean-rust all-rust
+.PHONY: generate postgen build install lint typecheck check all clean generate-csharp build-csharp pack-csharp clean-csharp all-csharp generate-go build-go clean-go all-go generate-rust build-rust clean-rust all-rust generate-cpp build-cpp clean-cpp all-cpp
 
 generate:
 	buf generate
@@ -67,3 +67,21 @@ clean-rust:
 	cargo clean
 
 all-rust: generate-rust build-rust
+
+# --- C++ targets ---
+generate-cpp:
+	buf generate --template buf.gen.cpp.yaml
+
+build-cpp:
+	cmake -B echo_server_cpp/build -S echo_server_cpp
+	cmake --build echo_server_cpp/build
+	cmake -B echo_client_cpp/build -S echo_client_cpp
+	cmake --build echo_client_cpp/build
+	mkdir -p bin
+	cp echo_server_cpp/build/echo_server_cpp bin/
+	cp echo_client_cpp/build/echo_client_cpp bin/
+
+clean-cpp:
+	rm -rf cpp_package/gen/ echo_server_cpp/build/ echo_client_cpp/build/ bin/echo_server_cpp bin/echo_client_cpp
+
+all-cpp: generate-cpp build-cpp

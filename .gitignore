@@ -12,3 +12,4 @@ go_package/demo/
 bin/
 rust_package/src/gen/demo/
 target/
+cpp_package/gen/

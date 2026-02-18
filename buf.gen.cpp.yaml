@@ -1,0 +1,11 @@
+version: v2
+clean: true
+plugins:
+  - protoc_builtin: cpp
+    out: cpp_package/gen
+
+  - local: /opt/homebrew/bin/grpc_cpp_plugin
+    out: cpp_package/gen
+
+inputs:
+  - directory: proto
